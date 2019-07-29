@@ -1,0 +1,35 @@
+spec_version: 1
+kind: application
+
+inputs:
+- AWS_INSTANCE_TYPE: m5.large
+
+infrastructure:
+  connectivity:
+    external:
+      - port_info:
+          port: 80
+  compute:
+    spec:            
+      aws:
+        instance_type: $AWS_INSTANCE_TYPE
+        
+configuration:
+  start:
+    script: leads-command.sh
+  initialization:
+    script: leads.sh
+  healthcheck:
+    timeout: 1000
+    wait_for_ports: 80
+    
+source:
+  image:    
+    ami:
+      - id: ami-0565af6e282977273
+        region: us-east-1
+        username: ubuntu
+  os_type: linux
+  
+debugging: 
+  connection_protocol: SSH
