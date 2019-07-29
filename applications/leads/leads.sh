@@ -26,8 +26,9 @@ tar -xvf $ARTIFACTS_PATH/leads-webapp.*.tar.gz -C /var/leads-webapp/
 # make sure init file exists and if not create it
 if [ -f "/var/leads-webapp/__init__.py" ]
 then
-else   
-  touch /var/leads-webapp/__init__.py
+    echo ''
+else
+    touch /var/leads-webapp/__init__.py
 fi
 
 echo '==> Add 755 permissions on /var/leads-webapp/'
