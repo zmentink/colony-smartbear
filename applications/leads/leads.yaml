@@ -3,6 +3,11 @@ kind: application
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
+- SALESFORCE_CLIENT_ID: x
+- SALESFORCE_CLIENT_SECRET: 
+- SALESFORCE_USERNAME: x
+- SALESFORCE_PASSWORD: x
+- SALESFORCE_LOGIN_URL: x
 
 infrastructure:
   connectivity:
