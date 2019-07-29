@@ -18,10 +18,14 @@ applications:
       instances: 1
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
+        - SALESFORCE_LOGIN_URL: $outputs.smartbear-servicev.SALESFORCE_LOGIN_URL
     
   - db:      
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
+
+services:
+  - smartbear-servicev
             
 debugging:
   availability: on

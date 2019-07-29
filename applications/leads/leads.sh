@@ -37,10 +37,21 @@ cat << EOF > /var/leads-webapp/leads_webapp.wsgi
 #! /usr/bin/python
 import logging
 import sys
+import os
+
 logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0, '/var/leads-webapp/')
-from leads_webapp import app as application
-application.secret_key = 'somekey'
+
+def application(req_environ, start_response):
+    
+    for key in req_environ:
+        if key.startswith('SALESFORCE_'):
+            os.environ[key] = req_environ[key]
+
+    ## has to import my app inside of application def block.
+    from leads_webapp import app as _application
+
+    return _application(req_environ, start_response)
 EOF
 
 echo '==> Add 755 permissions on /var/leads-webapp/'
@@ -58,6 +69,13 @@ cat << EOF > /etc/apache2/sites-available/leads-webapp.conf
      WSGIDaemonProcess leads_webapp user=www-data group=www-data threads=5
      WSGIProcessGroup leads_webapp
      WSGIScriptAlias / /var/leads-webapp/leads_webapp.wsgi
+
+     SetEnv SALESFORCE_LOGIN_URL $SALESFORCE_LOGIN_URL
+     SetEnv SALESFORCE_CLIENT_ID $SALESFORCE_CLIENT_ID
+     SetEnv SALESFORCE_CLIENT_SECRET $SALESFORCE_CLIENT_SECRET
+     SetEnv SALESFORCE_USERNAME $SALESFORCE_USERNAME
+     SetEnv SALESFORCE_PASSWORD $SALESFORCE_PASSWORD
+
      <Directory /var/leads-webapp/>
                 # set permissions as per apache2.conf file
             Options FollowSymLinks
