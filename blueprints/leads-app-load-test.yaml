@@ -1,0 +1,27 @@
+spec_version: 1
+kind: blueprint
+metadata:
+  description: >
+    Application is configured to deploy with multiple instances for load tests.
+    
+clouds: 
+  - AWS 1: eu-west-1
+  
+artifacts:
+  - leads: artifacts/latest/leads-webapp.latest.tar.gz
+
+inputs:
+- AWS_INSTANCE_TYPE: m5.large
+
+applications:
+  - leads:
+      instances: 2
+      input_values:
+        - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
+    
+  - db:      
+      input_values:
+        - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
+            
+debugging:
+  availability: on
