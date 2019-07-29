@@ -31,17 +31,17 @@ service mongod start
 echo 'Enable automatically starting MongoDB when the system starts.'
 sudo systemctl enable mongod
 
-echo 'Extracting user data db artifact'
-mkdir $ARTIFACTS_PATH/drop
-tar -xvf $ARTIFACTS_PATH/*.* -C $ARTIFACTS_PATH/drop/
+# echo 'Extracting user data db artifact'
+# mkdir $ARTIFACTS_PATH/drop
+# tar -xvf $ARTIFACTS_PATH/*.* -C $ARTIFACTS_PATH/drop/
 
-echo 'Waiting for db to be ready'
-sleep 30
+# echo 'Waiting for db to be ready'
+# sleep 30
 
-echo 'Import all collections from artifact'
-cd $ARTIFACTS_PATH/drop
-for f in ./*.json; do
-	temp_var="${f%.*}"
-	collection="${temp_var:2}"
-	mongoimport --db promo-manager --collection $collection --file $ARTIFACTS_PATH/drop/$f
-done
+# echo 'Import all collections from artifact'
+# cd $ARTIFACTS_PATH/drop
+# for f in ./*.json; do
+# 	temp_var="${f%.*}"
+# 	collection="${temp_var:2}"
+# 	mongoimport --db promo-manager --collection $collection --file $ARTIFACTS_PATH/drop/$f
+# done

@@ -4,7 +4,7 @@ echo "==> Installing apache web server"
 apt-get update -y
 apt-get python2
 apt-get install apache2 -y
-ufw allow 'Apache Full'
+service apache2 stop
 
 echo "==> Installing python 2.7"
 apt-get install python-minimal -y
@@ -31,11 +31,6 @@ else
     touch /var/leads-webapp/__init__.py
 fi
 
-echo '==> Add 755 permissions on /var/leads-webapp/'
-chmod 755 /var
-chmod 755 /var/leads-webapp
-
-
 echo '==> Create flask wsgi file'
 touch /var/leads-webapp/leads_webapp.wsgi
 cat << EOF > /var/leads-webapp/leads_webapp.wsgi
@@ -47,6 +42,10 @@ sys.path.insert(0, '/var/leads-webapp/')
 from leads_webapp import app as application
 application.secret_key = 'somekey'
 EOF
+
+echo '==> Add 755 permissions on /var/leads-webapp/'
+chmod 755 /var
+chmod 755 /var/leads-webapp
 
 echo '==> Configure apache'
 mv /etc/apache2/sites-available/ /etc/apache2/sites-available-old/
@@ -73,3 +72,6 @@ EOF
 
 echo "==> enable leads-webapp flask app"
 a2ensite leads-webapp
+
+ufw allow 'Apache Full'
+service apache2 start
