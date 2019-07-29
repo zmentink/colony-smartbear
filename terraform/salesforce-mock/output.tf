@@ -1,3 +1,3 @@
 output "SALESFORCE_LOGIN_URL" {
-  value = "some mocked url"
+  value = "http://some_mocked_url"
 }
