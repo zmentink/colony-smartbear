@@ -72,6 +72,6 @@ EOF
 
 echo "==> enable leads-webapp flask app"
 a2ensite leads-webapp
-
 ufw allow 'Apache Full'
 service apache2 start
+service apache2 reload
