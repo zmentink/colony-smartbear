@@ -19,6 +19,9 @@ applications:
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
         - SALESFORCE_LOGIN_URL: $outputs.smartbear-servicev.SALESFORCE_LOGIN_URL
+      depends_on:
+        - smartbear-servicev
+
     
   - db:      
       input_values:
