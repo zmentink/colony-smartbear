@@ -26,8 +26,8 @@ configuration:
 source:
   image:    
     ami:
-      - id: ami-0565af6e282977273
-        region: us-east-1
+      - id: ami-08660f1c6fb6b01e7
+        region: eu-west-1
         username: ubuntu
   os_type: linux
   
