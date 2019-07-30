@@ -29,6 +29,9 @@ source:
       - id: ami-08660f1c6fb6b01e7
         region: eu-west-1
         username: ubuntu
+      - id: ami-09eb5e8a83c7aa890
+        region: us-west-1
+        username: ubuntu
   os_type: linux
   
 debugging: 
