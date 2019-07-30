@@ -8,7 +8,7 @@ clouds:
   - AWS: us-west-1
   
 artifacts:
-  - leads: leads-webapp-artifacts/latest/leads-webapp.latest.tar.gz
+  - leads: latest/leads-webapp.latest.tar.gz
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
