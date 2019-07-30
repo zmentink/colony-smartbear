@@ -5,23 +5,23 @@ metadata:
     Application is configured to deploy with multiple instances for load tests.
     
 clouds: 
-  - AWS 1: eu-west-1
+  - AWS: us-west-1
   
 artifacts:
-  - leads: leads-app/latest/leads-webapp.latest.tar.gz
+  - leads: leads-webapp-artifacts/latest/leads-webapp.latest.tar.gz
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
+- INSTANCES_COUNT: 1
 
 applications:
   - leads:
-      instances: 1
+      instances: $INSTANCES_COUNT
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
         - SALESFORCE_LOGIN_URL: $outputs.smartbear-servicev.SALESFORCE_LOGIN_URL
       depends_on:
         - smartbear-servicev
-
     
   - db:      
       input_values:
