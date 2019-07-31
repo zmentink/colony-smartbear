@@ -13,15 +13,14 @@ artifacts:
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
+- SALESFORCE_ENDPOINT: http://smartbear-servicev:8080/leads-virt
 
 applications:
   - leads:
       instances: 1
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
-        - SALESFORCE_LOGIN_URL: http://smartbear-servicev/
-      # depends_on:
-      #   - smartbear-servicev
+        - SALESFORCE_LOGIN_URL: $SALESFORCE_ENDPOINT
     
   - db:      
       input_values:

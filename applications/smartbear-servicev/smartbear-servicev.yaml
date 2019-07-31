@@ -6,9 +6,7 @@ inputs:
 
 infrastructure:
   connectivity:
-    external:
-      - port_info:
-          port: 8088
+    internal:
       - port_info:
           port: 8080
   compute:
