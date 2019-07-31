@@ -23,7 +23,7 @@ configuration:
     script: servicev.sh
   healthcheck:
     timeout: 1000
-    wait_for_ports: 80
+    wait_for_ports: 8088
     
 source:
   image:    
