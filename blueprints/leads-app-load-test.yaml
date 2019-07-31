@@ -9,6 +9,7 @@ clouds:
   
 artifacts:
   - leads: latest/leads-webapp.latest.tar.gz
+  - smartbear-servicev:
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
@@ -26,8 +27,7 @@ applications:
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
 
-services:
-  - smartbear-servicev
+  - smartbear-servicev:
             
 debugging:
   availability: on
