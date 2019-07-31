@@ -9,6 +9,8 @@ infrastructure:
     external:
       - port_info:
           port: 8088
+      - port_info:
+          port: 8080
   compute:
     spec:            
       aws:
