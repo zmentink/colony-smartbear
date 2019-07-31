@@ -19,7 +19,7 @@ applications:
       instances: 1
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
-        - SALESFORCE_LOGIN_URL: http://smartbear-servicev.{COLONY.SandboxId}.sandbox.com:8080/leads-virt
+        - SALESFORCE_LOGIN_URL: http://smartbear-servicev.${COLONY.SandboxId}.sandbox.com:8080/leads-virt
     
   - db:      
       input_values:
