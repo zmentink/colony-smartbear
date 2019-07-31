@@ -9,18 +9,17 @@ clouds:
   
 artifacts:
   - leads: latest/leads-webapp.latest.tar.gz
-  - smartbear-servicev:
+  - smartbear-servicev: sf-virtual-service/leads-virt.war
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
-- SALESFORCE_ENDPOINT: http://smartbear-servicev:8080/leads-virt
 
 applications:
   - leads:
       instances: 1
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
-        - SALESFORCE_LOGIN_URL: $SALESFORCE_ENDPOINT
+        - SALESFORCE_LOGIN_URL: http://smartbear-servicev.{COLONY}.sandbox.com:8080/leads-virt
     
   - db:      
       input_values:
