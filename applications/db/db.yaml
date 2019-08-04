@@ -26,10 +26,7 @@ configuration:
 source:
   image:    
     ami:
-      - id: ami-08660f1c6fb6b01e7
-        region: eu-west-1
-        username: ubuntu
-      - id: ami-09eb5e8a83c7aa890
+      - id: ami-0194d18edbe11d815 # custom private ami
         region: us-west-1
         username: ubuntu
   os_type: linux
