@@ -9,23 +9,23 @@ clouds:
   
 artifacts:
   - leads: latest/leads-webapp.latest.tar.gz
-  - smartbear-servicev: sf-virtual-service/leads-virt.war
+  - salesforce-virt: sf-virtual-service/leads-virt.war
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
 
 applications:
-  - leads:
+  - leads-entry:
       instances: 1
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
-        - SALESFORCE_LOGIN_URL: http://smartbear-servicev.${COLONY.SandboxId}.sandbox.com:8080/leads-virt
+        - SALESFORCE_LOGIN_URL: http://salesforce-virt.${COLONY.SandboxId}.sandbox.com:8080/leads-virt
     
   - db:      
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
 
-  - smartbear-servicev:
+  - salesforce-virt:
             
 debugging:
   availability: on
