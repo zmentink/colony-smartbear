@@ -8,7 +8,7 @@ clouds:
   - AWS: us-west-1
   
 artifacts:
-  - leads: latest/leads-webapp.latest.tar.gz
+  - leads-entry: latest/leads-webapp.latest.tar.gz
   - salesforce-virt: sf-virtual-service/leads-virt.war
 
 inputs:

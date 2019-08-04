@@ -21,9 +21,9 @@ infrastructure:
         
 configuration:
   start:
-    script: leads-command.sh
+    script: leads-entry-command.sh
   initialization:
-    script: leads.sh
+    script: leads-entry.sh
   healthcheck:
     timeout: 1000
     wait_for_ports: 80
