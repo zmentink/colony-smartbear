@@ -16,9 +16,9 @@ infrastructure:
         
 configuration:
   start:
-    script: servicev-command.sh
+    script: salesforce-virt-command.sh
   initialization:
-    script: servicev.sh
+    script: salesforce-virt.sh
   healthcheck:
     timeout: 1000
     wait_for_ports: 8080
