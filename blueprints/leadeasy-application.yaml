@@ -8,14 +8,14 @@ clouds:
   - AWS: us-west-1
   
 artifacts:
-  - leads-entry: latest/leads-webapp.latest.tar.gz
+  - leadeasy: latest/leads-webapp.latest.tar.gz
   - salesforce-virt: sf-virtual-service/leads-virt.war
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
 
 applications:
-  - leads-entry:
+  - leadeasy:
       instances: 2
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
