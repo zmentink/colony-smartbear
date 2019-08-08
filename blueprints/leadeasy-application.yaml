@@ -8,20 +8,20 @@ clouds:
   - AWS: us-west-1
   
 artifacts:
-  - leadeasy: latest/leads-webapp.latest.tar.gz
+  - leadeasy-frontend: latest/leads-webapp.latest.tar.gz
   - salesforce-virt: sf-virtual-service/leads-virt.war
 
 inputs:
 - AWS_INSTANCE_TYPE: m5.large
 
 applications:
-  - leadeasy:
+  - leadeasy-frontend:
       instances: 2
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
         - SALESFORCE_LOGIN_URL: http://salesforce-virt.${COLONY.SandboxId}.sandbox.com:8080/leads-virt
     
-  - db:      
+  - database:      
       input_values:
         - AWS_INSTANCE_TYPE: $AWS_INSTANCE_TYPE
 
