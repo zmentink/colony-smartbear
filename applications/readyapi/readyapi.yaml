@@ -1,0 +1,31 @@
+spec_version: 1
+kind: application
+
+inputs:
+- AWS_INSTANCE_TYPE: m5.large
+
+infrastructure:  
+  compute:
+    spec:            
+      aws:
+        instance_type: $AWS_INSTANCE_TYPE
+        
+configuration:
+  start:
+    script: readyapi-command.sh
+  initialization:
+    script: readyapi.sh
+  healthcheck:
+    timeout: 1000
+    script: readyapi-hc.sh
+    
+source:
+  image:    
+    ami:
+      - id: ami-0860167408a64d00a # custom private ami
+        region: us-west-1
+        username: administrator
+  os_type: windows
+  
+debugging: 
+  connection_protocol: RDP

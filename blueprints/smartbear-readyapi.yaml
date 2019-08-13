@@ -1,0 +1,14 @@
+spec_version: 1
+kind: blueprint
+metadata:
+  description: >
+    Deploy a windows instance with ReadyAPI
+    
+clouds: 
+  - AWS: us-west-1
+
+applications:
+  - readyapi
+            
+debugging:
+  availability: on
