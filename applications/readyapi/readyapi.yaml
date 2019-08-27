@@ -22,7 +22,7 @@ configuration:
 source:
   image:    
     ami:
-      - id: ami-0860167408a64d00a # custom private ami
+      - id: ami-0b9d99ac51f084693 # custom private ami
         region: us-west-1
         username: administrator
   os_type: windows
